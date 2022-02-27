@@ -3,13 +3,16 @@
 class Index{
 	
 	public function __construct($run=null){
-		echo 'index';
 		if($run!==NULL){
 			$this->$run();
 		}
 	}	
 	public function index(){
-		return 'run';
+		include_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/templates/index.php");
+	}
+	public function logout(){
+		unset($_SESSION['logged']);
+		include_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/templates/logout.php");
 	}
 }
 

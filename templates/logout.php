@@ -39,25 +39,11 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Zaloguj się!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Zostałeś wylgowany!</h1>
                                     </div>
-                                    <form class="user" method="POST">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                name="email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                name="password" placeholder="Password">
-                                        </div>
-                                        <button class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </button>
-                                        <hr>
-                                    </form>
+                                    
                                     <div class="text-center">
-                                        <a class="small" href="register">Nie masz konta? Zarejestruj się!</a>
+                                        <a class="small" href="index">Przejdź do strony głównej!</a>
                                     </div>
                                 </div>
                             </div>
