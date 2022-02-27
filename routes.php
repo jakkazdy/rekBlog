@@ -9,10 +9,11 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/config/router.php");
 // ##################################################
 // ##################################################
 // ##################################################
-get('/', 'index.php');
-get('/login', 'login.php');
-get('/Register', 'register.php');
+get('/auroracreation', 'index.php');
+get('/auroracreation/login', 'login.php', 'index');
+get('/auroracreation/register', 'register.php', 'index');
+post('/auroracreation/register', 'register.php', 'index');
+//get('/Register', 'register.php');
 
-get('/user/$id', 'user.php');
-
-any('/404','templates/error/404.php');
+//get('/user/$id', 'user.php');
+any('/$er','error');

@@ -5,47 +5,47 @@ class User{
 	/* uuid */
 	private $id;
 	/* login string 32 */
-	private $login;
+	public $login;
 	/* email string 255 */
-	private $email;
+	public $email;
 	/* password string 255 */
-	private $hashpassword;
+	public $hashpassword;
 	/* password string 255 */
-	private $hashlogged;
+	public $hashlogged;
 
 	public function getId(): int
 	{
 		return $this->id;
 	}	
-	public function setLogin(string $login): self
+	public function setLogin(string $login)
 	{
 		$this->login=$login;
 	}
-	public function getLogin(): int
+	public function getLogin()
 	{
 		return $this->login;
 	}	
-	public function setEmail(string $email): self
+	public function setEmail(string $email)
 	{
 		$this->email=$email;
 	}
-	public function getEmail(): int
+	public function getEmail()
 	{
 		return $this->email;
 	}	
-	public function setHashpassword(string $hashpassword): self
+	public function setHashpassword(string $hashpassword)
 	{
 		$this->hashpassword=$hashpassword;
 	}
-	public function getHashpassword(): string
+	public function getHashpassword()
 	{
 		return $this->hashpassword;
 	}	
-	public function setHashlogged(string $hashlogged): self
+	public function setHashlogged(string $hashlogged)
 	{
 		$this->hashlogged=$hashlogged;
 	}
-	public function getHashlogged(): string
+	public function getHashlogged()
 	{
 		return $this->hashlogged;
 	}

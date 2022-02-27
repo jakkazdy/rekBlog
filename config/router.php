@@ -1,11 +1,11 @@
 <?php
 
-
-function get($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+function get($route, $path_to_include, $run=null){
+  if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ //echo 'route-'.$route.'-path_to_include-'.$path_to_include; 
+  route($route, $path_to_include, $run); }  
 }
-function post($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }    
+function post($route, $path_to_include, $run=null){
+  if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include, $run); }    
 }
 function put($route, $path_to_include){
   if( $_SERVER['REQUEST_METHOD'] == 'PUT' ){ route($route, $path_to_include); }    
@@ -17,11 +17,16 @@ function delete($route, $path_to_include){
   if( $_SERVER['REQUEST_METHOD'] == 'DELETE' ){ route($route, $path_to_include); }    
 }
 function any($route, $path_to_include){ route($route, $path_to_include); }
-function route($route, $path_to_include){
+function route($route, $path_to_include,$run=null){
 
-  $ROOT = $_SERVER['DOCUMENT_ROOT'].URL_FILES;
+  $ROOT_templates = $_SERVER['DOCUMENT_ROOT'].URL_FILES;
+  $ROOT = $_SERVER['DOCUMENT_ROOT'].URL_FILES.'/controller';
   if($route == "/404"){
-    include_once("$ROOT/$path_to_include");
+    include_once("$ROOT_templates/$path_to_include");
+    exit();
+  }  
+  if($path_to_include == "error"){
+    include_once("$ROOT_templates/templates/error/404.php");
     exit();
   }  
   $request_url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
