@@ -5,10 +5,17 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/repository/ArticleReposit
 class Index{
 	
 	public function __construct($run=null){
+
+		echo '-1-'.$run.'-';
 		if($_SERVER['REQUEST_METHOD']=='POST'){
+			echo '-2-'.$run.'-';
 			if(isset($GLOBALS['id']) AND $GLOBALS['id']>0){
 				if($this->update($GLOBALS['id'])==TRUE){
-					$run='success';
+					if($_POST['status']==2){
+						$run='index';
+					}else{
+						$run='success';
+					}
 				}else{
 					$run='error';
 				}
@@ -20,6 +27,7 @@ class Index{
 				}
 			}
 		}
+		echo '-3-'.$run.'-';
 		if($run!==NULL){
 			switch($run){
 				case'edit':
@@ -29,6 +37,9 @@ class Index{
 				$this->add();
 				break;
 				case'success':
+				$this->index();
+				break;
+				case'index':
 				$this->index();
 				break;
 				case'error':

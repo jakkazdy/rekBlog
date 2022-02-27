@@ -21,7 +21,12 @@ class ArticleRepository{
 	public function update($articleObj,$key){
 		$pdo=new PDO_Connect();
 		if($articleObj->status==2){
-
+			$q = $pdo->prepare("DELETE FROM article WHERE id=".$key);
+			if($q->execute()){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
 		}else{
 			$q = $pdo->prepare("UPDATE article SET title=?, description=?, status=? WHERE id=?");
 			$arrayData=[$articleObj->title,$articleObj->description,$articleObj->status,$key];

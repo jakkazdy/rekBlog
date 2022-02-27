@@ -118,6 +118,7 @@
                         <div class="col-lg-12 mb-4">
 
                             <!-- Blog -->
+                            <?php if(isset($articleData['title']) AND !empty($articleData['title'])){ ?>
                             <?php if(isset($statusEdit) AND $statusEdit==1){ ?>
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3" class="form-group">
@@ -172,6 +173,13 @@
                                 </div>
                             </form>
                             
+                            <?php }else{ ?>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3" class="form-group">
+                                    Artykuł usunięty
+                                </div>
+                            </div>
+                            <?php } ?>
 
                         </div>
                     </div>
