@@ -3,27 +3,60 @@
 class ArticleRepository{
 
 	public function add($articleObj){
-		$pdo=new PDO();
-		$sql = 'INSERT INTO article(title, cateogry_id, description, status) VALUES(:title, :cateogry_id, :parentId, :status)';
+
+		$pdo=new PDO_Connect();
+		$sql = 'INSERT INTO article(title, description, status) VALUES(:title, :description, :status)';
 		$statement = $pdo->prepare($sql);
-		$statement->execute([
-				':title' => $categoryObj->title,
-				':cateogry_id' => $categoryObj->$cateogry_id,
-				':description' => $categoryObj->$description,
-				':status' => $categoryObj->$status
-			]);
+		$arrayData=[
+				':title' => $articleObj->title,
+				':description' => $articleObj->description,
+				':status' => $articleObj->status
+			];
+		if($statement->execute($arrayData)){
+			return TRUE;
+		}else{
+			return FALSE;
 		}
-	}	
-	public function update($articleObj,int $key){
-		$pdo=new PDO();
-		//$sql = 'UPDATE category(title, parentId, status) VALUES(:title, :parentId, :status)';
-		$statement = $pdo->prepare($sql);
-		$statement->execute([
-				':title' => $categoryObj->title,
-				':cateogry_id' => $categoryObj->$cateogry_id,
-				':description' => $categoryObj->$description
-				':status' => $categoryObj->$status
-			]);
+	}
+	public function update($articleObj,$key){
+		$pdo=new PDO_Connect();
+		if($articleObj->status==2){
+
+		}else{
+			$q = $pdo->prepare("UPDATE article SET title=?, description=?, status=? WHERE id=?");
+			$arrayData=[$articleObj->title,$articleObj->description,$articleObj->status,$key];
+
+			if($q->execute($arrayData)){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+		}
+		
+		
+	}
+	public function findAll(){
+		$pdo=new PDO_Connect();
+		$q = $pdo->prepare('SELECT * FROM article WHERE status=1 ORDER BY id DESC');
+		$q->execute();
+		$data=$q->fetchAll();
+
+		if($data){
+			return $data;
+		}else{
+			return FALSE;
+		}
+	}
+	public function find($key){
+		$pdo=new PDO_Connect();
+		$q = $pdo->prepare('SELECT * FROM article WHERE id=? LIMIT 1');
+		$q->execute([$key]);
+		$data=$q->fetch();
+
+		if($data){
+			return $data;
+		}else{
+			return FALSE;
 		}
 	}
 

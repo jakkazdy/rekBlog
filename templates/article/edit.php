@@ -118,23 +118,60 @@
                         <div class="col-lg-12 mb-4">
 
                             <!-- Blog -->
-                            <?php
-                            	foreach($articleData as $art){
-                            		?>
-
+                            <?php if(isset($statusEdit) AND $statusEdit==1){ ?>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary"><?=$art['title'];?> <?php if(isset($_SESSION['logged']) AND $_SESSION['logged']==TRUE){
-            ?>- <small><a href="<?php echo URL_SITE;?>/article/edit/<?=$art['id'];?>">Edytuj</a></small><?php } ?></h6>
-                                    
-                                </div>
-                                <div class="card-body">
-                                    <p><?=$art['description'];?></p>
+                                <div class="card-header py-3" class="form-group">
+                                    <b>Wpis został zaktualizowany!</b>
                                 </div>
                             </div>
-                            <?php
-                            	}
-                            ?>
+                            <?php } ?>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3" class="form-group">
+                                    Edycja artykułu
+                                </div>
+                            </div>
+                            <form method="POST">
+                                <div class="card shadow mb-4 p-3">
+                                    <div class="col-ms-6 py-3" class="form-group">
+                                        Tytuł:
+                                    </div>
+                                    <div class="col-ms-6 py-3" class="form-group">
+                                        <input type="text" name="title" value="<?=$articleData['title'];?>" class="articleData">
+                                    </div>
+                                    <div class="col-ms-6 py-3" class="form-group">
+                                        Opis:
+                                    </div><div class="col-ms-6 py-3" class="form-group">
+                                        <textarea name="description" class="articleData"><?=$articleData['description'];?></textarea>
+                                    </div>
+                                    <div class="col-ms-6 py-3" class="form-group">
+                                        Status:
+                                    </div>
+                                    <div class="col-ms-6 py-3" class="form-group">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" value="2" name="status">
+                                          <label class="form-check-label" for="flexCheckDefault">
+                                            Usuń
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" value="0" name="status">
+                                          <label class="form-check-label" for="flexCheckDefault">
+                                            Ukryty
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" value="1" name="status" checked>
+                                          <label class="form-check-label" for="flexCheckChecked">
+                                            Aktywny
+                                          </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-ms-12 py-3" class="form-group">
+                                        <button class="btn btn-success">Zapisz</button>
+                                    </div>
+                                </div>
+                            </form>
+                            
 
                         </div>
                     </div>

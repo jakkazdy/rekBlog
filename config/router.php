@@ -48,6 +48,7 @@ function route($route, $path_to_include,$run=null){
       $route_part = ltrim($route_part, '$');
       array_push($parameters, $request_url_parts[$__i__]);
       $$route_part=$request_url_parts[$__i__];
+      $GLOBALS[$route_part]=$request_url_parts[$__i__];
     }
     else if( $route_parts[$__i__] != $request_url_parts[$__i__] ){
       return;
@@ -56,6 +57,7 @@ function route($route, $path_to_include,$run=null){
   include_once("$ROOT/$path_to_include");
   exit();
 }
+
 function out($text){echo htmlspecialchars($text);}
 function set_csrf(){
   if( ! isset($_SESSION["csrf"]) ){ $_SESSION["csrf"] = bin2hex(random_bytes(50)); }

@@ -7,17 +7,17 @@ class Article{
 	/* category_id */
 	private $category_id;
 	/* login string 32 */
-	private $title;
+	public $title;
 	/* email string 255 */
-	private $description;
+	public $description;
 	/* password string 255 */
-	private $status;
+	public $status;
 
 	public function getId(): int
 	{
 		return $this->id;
 	}	
-	public function setCategoryId(int $category_id): self
+	public function setCategoryId(int $category_id)
 	{
 		$this->category_id=$category_id;
 	}
@@ -25,7 +25,7 @@ class Article{
 	{
 		return $this->category_id;
 	}
-	public function setTitle(string $title): self
+	public function setTitle(string $title)
 	{
 		$this->title=$title;
 	}
@@ -33,7 +33,7 @@ class Article{
 	{
 		return $this->title;
 	}	
-	public function setDescription($description): self
+	public function setDescription($description)
 	{
 		$this->description=$description;
 	}
@@ -41,7 +41,7 @@ class Article{
 	{
 		return $this->description;
 	}	
-	public function setStatus(int $status): self
+	public function setStatus(int $status)
 	{
 		$this->status=$status;
 	}

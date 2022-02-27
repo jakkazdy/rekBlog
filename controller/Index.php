@@ -1,4 +1,6 @@
 <?php
+require_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/entity/Article.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/repository/ArticleRepository.php");
 
 class Index{
 	
@@ -8,6 +10,10 @@ class Index{
 		}
 	}	
 	public function index(){
+
+		$articleRepository=new ArticleRepository;
+		$articleData=$articleRepository->findAll();
+
 		include_once("{$_SERVER['DOCUMENT_ROOT']}".URL_FILES."/templates/index.php");
 	}
 	public function logout(){
