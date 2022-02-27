@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 function get($route, $path_to_include){
   if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
@@ -19,6 +18,7 @@ function delete($route, $path_to_include){
 }
 function any($route, $path_to_include){ route($route, $path_to_include); }
 function route($route, $path_to_include){
+
   $ROOT = $_SERVER['DOCUMENT_ROOT'].URL_FILES;
   if($route == "/404"){
     include_once("$ROOT/$path_to_include");
